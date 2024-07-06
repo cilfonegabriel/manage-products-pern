@@ -1,3 +1,13 @@
-export function sumar (){
-    console.log(2 + 6)
-}
+import express from 'express'
+
+const server = express()
+
+// Routing
+server.get('/', (req, res) => {
+
+    const auth = true
+
+    res.json(auth)
+});
+
+export default server
