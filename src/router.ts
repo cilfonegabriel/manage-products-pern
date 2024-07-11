@@ -1,12 +1,19 @@
 import { Router } from "express";
-import { body } from "express-validator";
-import { createProduct, getProducts } from "./handlers/product";
+import { body, param } from "express-validator";
+import { createProduct, getProductById, getProducts } from "./handlers/product";
 import { handleInputErrors } from "./middleware";
 
 const router = Router();
 
 // Routing
 router.get('/', getProducts );
+
+router.get('/:id',
+    param('id').isInt().withMessage('ID in not valid'),
+    handleInputErrors,
+    getProductById 
+);
+
 
 router.post('/', 
     // Validación
