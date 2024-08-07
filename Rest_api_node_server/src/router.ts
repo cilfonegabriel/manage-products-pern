@@ -4,8 +4,31 @@ import { createProduct, deleteProduct, getProductById, getProducts, updateAvaila
 import { handleInputErrors } from "./middleware";
 
 const router = Router();
+/**
+ * @swagger
+ * components:
+ *      schemas:
+ *          Product:
+ *              type: object
+ *              properties:
+ *                  id:
+ *                      type: integer
+ *                      description: The product ID
+ *                      example: 1
+ *                  name:
+ *                      type: string
+ *                      description: The product name
+ *                      example: Monitor curvo de 40 pulgadas
+ *                  price:
+ *                      type: number
+ *                      description: The product price
+ *                      example: 300
+ *                  availability:
+ *                      type: boolean
+ *                      description: The product availability
+ *                      example: true
+ */
 
-// Routing
 router.get('/', getProducts );
 
 router.get('/:id',
@@ -13,7 +36,6 @@ router.get('/:id',
     handleInputErrors,
     getProductById 
 );
-
 
 router.post('/', 
     // Validación
